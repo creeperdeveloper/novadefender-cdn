@@ -18,18 +18,14 @@ try {
     if ($found) {
         if (-not (Test-Path $flagPath)) {
             Add-Type -AssemblyName PresentationFramework
-            [System.Windows.MessageBox]::Show('Solstice(1.21.100).dllが検出されました！', '警告')
+            [System.Windows.MessageBox]::Show('Solstice(1.21.100).dll detected!', 'Warning')
             New-Item $flagPath -ItemType File | Out-Null
         }
+    } else {
+        if (Test-Path $flagPath) { Remove-Item $flagPath }
     }
-    else {
-        if (Test-Path $flagPath) {
-            Remove-Item $flagPath
-        }
-    }
-}
-catch {
-    Write-Output 'エラー: 権限不足かUWPアプリのためモジュール情報を取得できません'
+} catch {
+    Write-Output 'Error: Could not access process modules. Insufficient permissions or UWP app.'
 }
 
-Read-Host "終了するにはEnterキーを押してください"
+Read-Host "Press Enter to exit"

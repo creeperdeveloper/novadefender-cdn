@@ -1,5 +1,3 @@
-# solstice-detector.ps1
-
 $flagPath = 'C:\Users\Public\solstice_detected.flag'
 
 try {
@@ -15,7 +13,7 @@ try {
             }
             if ($found) { break }
         } catch {
-            # モジュール情報取得できない場合は無視（権限不足やUWP制限）
+            # モジュール情報取得できない場合は無視
         }
     }
 
@@ -27,7 +25,6 @@ try {
         }
     }
     else {
-        # 検出されなければフラグファイルを削除
         if (Test-Path $flagPath) {
             Remove-Item $flagPath
         }
@@ -37,5 +34,4 @@ catch {
     Write-Output 'エラー: 権限不足かUWPアプリのためモジュール情報を取得できません'
 }
 
-# 終了前にEnter待ち（実行ウィンドウが閉じないように）
 Read-Host "Enterキーを押して終了"

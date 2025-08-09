@@ -12,15 +12,13 @@ try {
                 }
             }
             if ($found) { break }
-        } catch {
-            # モジュール情報取得できない場合は無視
-        }
+        } catch {}
     }
 
     if ($found) {
         if (-not (Test-Path $flagPath)) {
             Add-Type -AssemblyName PresentationFramework
-            [System.Windows.MessageBox]::Show('Solstice(1.21.100).dll が検出されました！','警告')
+            [System.Windows.MessageBox]::Show('Solstice(1.21.100).dllが検出されました！', '警告')
             New-Item $flagPath -ItemType File | Out-Null
         }
     }
@@ -34,4 +32,4 @@ catch {
     Write-Output 'エラー: 権限不足かUWPアプリのためモジュール情報を取得できません'
 }
 
-Read-Host "Enterキーを押して終了"
+Read-Host "終了するにはEnterキーを押してください"

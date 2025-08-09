@@ -1,4 +1,4 @@
-$flagPath = 'C:\Users\Public\solstice_detected.flag'
+﻿$flagPath = 'C:\Users\Public\solstice_detected.flag'
 
 try {
     $found = $false
@@ -25,7 +25,7 @@ try {
         if (Test-Path $flagPath) { Remove-Item $flagPath }
     }
 } catch {
-    Write-Output 'Error: Could not access process modules. Insufficient permissions or UWP app.'
+    Write-Output 'Error: Cannot access process modules. Insufficient permissions or UWP app.'
 }
 
 Read-Host "Press Enter to exit"
